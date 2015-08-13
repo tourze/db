@@ -4,6 +4,7 @@ namespace tourze\Db;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use tourze\Base\Config;
 use tourze\Base\Helper\Arr;
 
 /**
