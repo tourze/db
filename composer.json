@@ -1,0 +1,38 @@
+{
+  "name": "tourze/db",
+  "description": "DB操作类",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "YwiSax",
+      "email": "25803471@qq.com"
+    }
+  ],
+  "require": {
+    "tourze/core": "dev-master",
+    "doctrine/dbal": "~2.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "tourze\\Db\\": "src/"
+    },
+    "files": [
+      "bootstrap.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://git.oschina.net/ywisax/com.tourze.php.core.git"
+    },
+    {
+      "type": "composer",
+      "url": "http://php.composer.org/repo/packagist/"
+    },
+    {"packagist": false}
+  ]
+}
