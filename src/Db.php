@@ -10,12 +10,14 @@ use tourze\Base\Helper\Arr;
 /**
  * 数据库连接类，基于doctrine/dbal来实现
  *
- * @package    Base/Database
- * @category   Base
+ * @package tourze\Db
  */
 class Db
 {
 
+    /**
+     * @var string 默认读取的配置文件
+     */
     public static $configFile = 'database';
 
     /**
@@ -44,7 +46,7 @@ class Db
     public static $default = 'default';
 
     /**
-     * @var  array  一个存放所有实例的数组
+     * @var array 一个存放所有实例的数组
      */
     public static $instances = [];
 
@@ -64,12 +66,13 @@ class Db
      *
      *     // 加载默认实例
      *     $db = Database::instance();
+     *
      *     // 指定实例名称和配置
      *     $db = Database::instance('custom', $config);
      *
-     * @param   string $name   实例名
-     * @param   array  $config 配置参数
-     * @return  Connection
+     * @param  string $name   实例名
+     * @param  array  $config 配置参数
+     * @return Connection
      */
     public static function instance($name = null, array $config = null)
     {
