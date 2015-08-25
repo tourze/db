@@ -62,6 +62,19 @@ class Db
     ];
 
     /**
+     * @var array 一些默认设置
+     */
+    public static $defaultConfig = [
+        'pdo_mysql' => [
+            'wrapperClass'  => 'Facile\DoctrineMySQLComeBack\Doctrine\DBAL\Connection',
+            'driverClass'   => 'Facile\DoctrineMySQLComeBack\Doctrine\DBAL\Driver\PDOMySql\Driver',
+            'driverOptions' => [
+                'x_reconnect_attempts' => 3
+            ]
+        ],
+    ];
+
+    /**
      * 单例模式，获取一个指定的实例
      *
      *     // 加载默认实例
@@ -87,6 +100,12 @@ class Db
             if (null === $config)
             {
                 $config = (array) Config::load(self::$configFile)->get($name);
+            }
+
+            // 合并默认配置
+            if (isset(self::$defaultConfig[Arr::get($config, 'driver')]))
+            {
+                $config = Arr::merge(self::$defaultConfig[Arr::get($config, 'driver')], $config);
             }
 
             $conn = DriverManager::getConnection($config);

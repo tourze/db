@@ -11,7 +11,8 @@
   ],
   "require": {
     "tourze/core": "dev-master",
-    "doctrine/dbal": "~2.5"
+    "doctrine/dbal": "~2.5",
+    "facile-it/doctrine-mysql-come-back": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.7"
