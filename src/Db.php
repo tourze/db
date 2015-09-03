@@ -4,6 +4,7 @@ namespace tourze\Db;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use tourze\Base\Base;
 use tourze\Base\Config;
 use tourze\Base\Helper\Arr;
 
@@ -100,30 +101,46 @@ class Db
             if (null === $config)
             {
                 $config = (array) Config::load(self::$configFile)->get($name);
+                Base::getLog()->debug(__METHOD__ . ' get default config', [
+                    'name' => $name,
+                ]);
             }
 
             // 合并默认配置
             if (isset(self::$defaultConfig[Arr::get($config, 'driver')]))
             {
                 $config = Arr::merge(self::$defaultConfig[Arr::get($config, 'driver')], $config);
+                Base::getLog()->debug(__METHOD__ . ' merge config', [
+                    'name' => $name
+                ]);
             }
 
             $conn = DriverManager::getConnection($config);
+            Base::getLog()->debug(__METHOD__ . ' create dbal connection', [
+                'name' => $name
+            ]);
 
             // 额外注册字段类型
-            if (isset(self::$mappingType[Arr::get($config, 'driver')]))
+            if (isset(self::$mappingType[Arr::et($config, 'driver')]))
             {
                 $platform = $conn->getDatabasePlatform();
                 foreach (self::$mappingType[Arr::get($config, 'driver')] as $dbType => $doctrineType)
                 {
                     if ( ! $platform->hasDoctrineTypeMappingFor($dbType))
                     {
+                        Base::getLog()->debug(__METHOD__ . ' add dbal mapping type', [
+                            'raw'  => $dbType,
+                            'dbal' => $doctrineType,
+                        ]);
                         $platform->registerDoctrineTypeMapping($dbType, $doctrineType);
                     }
                 }
             }
 
             Db::$instances[$name] = $conn;
+            Base::getLog()->debug(__METHOD__ . ' save db instance', [
+                'name' => $name
+            ]);
         }
 
         return Db::$instances[$name];

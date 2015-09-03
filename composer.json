@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "tourze/core": "dev-master",
+    "tourze/base": "dev-master",
     "doctrine/dbal": "~2.5",
     "facile-it/doctrine-mysql-come-back": "^1.5"
   },
@@ -30,7 +30,7 @@
       "tourze\\Db\\": "tests/"
     },
     "files": [
-      "bootstrap.php"
+      "bootstrap-dev.php"
     ]
   }
 }
