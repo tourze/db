@@ -121,7 +121,7 @@ class Db
             ]);
 
             // 额外注册字段类型
-            if (isset(self::$mappingType[Arr::et($config, 'driver')]))
+            if (isset(self::$mappingType[Arr::get($config, 'driver')]))
             {
                 $platform = $conn->getDatabasePlatform();
                 foreach (self::$mappingType[Arr::get($config, 'driver')] as $dbType => $doctrineType)
