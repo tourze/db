@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "tourze/base": "dev-master",
+    "tourze/base": "^1.0",
     "doctrine/dbal": "~2.5",
     "facile-it/doctrine-mysql-come-back": "^1.5"
   },
