@@ -2,7 +2,7 @@
   "name": "tourze/db",
   "description": "DB操作类",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "license": "MIT",
   "authors": [
     {
       "name": "tourze",
