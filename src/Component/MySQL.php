@@ -3,7 +3,7 @@
 namespace tourze\Db\Component;
 
 /**
- * MySQL的支持
+ * MySQL的支持，待实现
  *
  * @package tourze\Db\Component
  */
